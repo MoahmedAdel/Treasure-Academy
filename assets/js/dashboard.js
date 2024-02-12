@@ -197,6 +197,69 @@ $(function () {
 // =====================================
 // selected input 
 // =====================================
+
+//submit form when inter value in input "veiw per page" 
 function submitForm(formId) {
   document.getElementById(formId).submit();
+}
+
+//select all rows and show numbers row checked 
+document.getElementById('selectAllAuthors').addEventListener('change', function () {
+  var authorCheckboxes = document.getElementsByClassName('author');
+  for (var i = 0; i < authorCheckboxes.length; i++) {
+    authorCheckboxes[i].checked = this.checked;
+  }
+  //show buttons when check all row
+  var controls = document.getElementById('controls');
+  controls.style.display = this.checked ? 'table-cell' : 'none';
+  updateAuthorCount();
+});
+
+var authorCheckboxes = document.getElementsByClassName('author');
+for (var i = 0; i < authorCheckboxes.length; i++) {
+  authorCheckboxes[i].addEventListener('change', function () {
+    updateAuthorCount();
+  });
+}
+
+function updateAuthorCount() {
+  var checkedCount = document.querySelectorAll('input[class="author"]:checked').length;
+  document.getElementById('authorCount').textContent = checkedCount + " selected";
+}
+
+//change color span status when textContent changes
+var statuses = document.getElementsByClassName("status-text");
+
+for (var i = 0; i < statuses.length; i++) {
+  var content = statuses[i].textContent.trim().toLowerCase();
+
+  if (content === "available") {
+    statuses[i].classList.add("bg-light-success", "text-success");
+  }
+  else if (content === "completed") {
+    statuses[i].classList.add("bg-light-primary", "text-primary");
+  } else if (content === "deactivated") {
+    statuses[i].classList.add("bg-light-danger", "text-danger");
+  } else if (content === "upcoming") {
+    statuses[i].classList.add("bg-light-warning", "text-warning");
+  }
+}
+
+//change color input status when selected 
+var selectElement = document.getElementById("status-select");
+var selectClass = 'select-input-status ';
+var options = selectElement.options;
+for (var i = 0; i < options.length; i++) {
+  if (options[i].value == 'available' && options[i].selected == true) {
+    selectElement.className = selectClass + 'badge bg-light-success rounded-pill text-success px-3 py-2 fs-3 text-center';
+  }
+  else if (options[i].value == 'upcoming' && options[i].selected == true) {
+    selectElement.className = selectClass + 'badge bg-light-warning rounded-pill text-warning px-3 py-2 fs-3 text-center';
+  }
+  else if (options[i].value == 'deactivated' && options[i].selected == true) {
+    selectElement.className = selectClass + 'badge bg-light-danger rounded-pill text-danger px-3 py-2 fs-3 text-center';
+  }
+  else if (options[i].value == 'completed' && options[i].selected == true) {
+    selectElement.className = selectClass + 'badge bg-light-primary rounded-pill text-primary px-3 py-2 fs-3 text-center';
+  }
 }

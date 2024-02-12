@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Spike Free</title>
+    <title>Dashboard</title>
     <link rel="shortcut icon" type="image/png" href="" />
     <link rel="stylesheet" href="../assets/css/styles.min.css" />
     <link rel="stylesheet" href="../assets/css/main.css">
@@ -107,7 +107,7 @@
                         <!-- <li class="sidebar-item">
                             <a class="sidebar-link sidebar-link danger-hover-bg" href="./authentication-register.html"
                                 aria-expanded="false">
-                                <span class="aside-icon p-2 bg-light-danger rounded-3">
+                                <span class  ="aside-icon p-2 bg-light-danger rounded-3">
                                     <i class="ti ti-user-plus fs-7 text-danger"></i>
                                 </span>
                                 <span class="hide-menu ms-2 ps-1">Register</span>
@@ -210,8 +210,8 @@
                                             <tr class="">
                                                 <th class="col-2 text-center">#</th>
                                                 <th class="col-4 text-center">Name</th>
-                                                <th class="col-3 text-center">created_at</th>
-                                                <th class="col-3 text-center">updated_at</th>
+                                                <th class="col-3 text-center">Creation Date</th>
+                                                <th class="col-3 text-center">Last Updated</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -301,6 +301,7 @@
                                     <table class="table table-borderless align-middle text-nowrap">
                                         <thead>
                                             <tr class="">
+                                                <th class="col"></th>
                                                 <th class="col text-center">#</th>
                                                 <th class="col text-center">Name</th>
                                                 <th class="col text-center">Description</th>
@@ -316,170 +317,208 @@
                                         </thead>
                                         <tbody>
                                             <tr class="text-center">
-                                                <td>
-                                                    <div>
-                                                        <h6 class="fw-bolder mb-0">1</h6>
+                                                <td><input type="checkbox" id="selectAllAuthors"></td>
+                                                <form action="">
+                                                    <td></td>
+                                                    <td></td>
+                                                </form>
+                                            </tr>
+                                            <form action="">
+                                                <tr >
+                                                    <td colspan="100" id="controls" style="display: none;">
+                                                    <div class="d-flex" >
+                                                        <div class="d-flex align-items-center" style="border: 1px solid rgb(135, 135, 135); padding: 5px; border-right:none ;">
+                                                            <p class="mb-0" id="authorCount"></p>
+                                                        </div>
+                                                        <div style="border: 1px solid rgb(135, 135, 135); padding: 5px; border-right: none;"><button style="border: none; background-color: white; ">Display</button></div>
+                                                        <div style="border: 1px solid rgb(135, 135, 135); padding: 5px; border-right: none;"><button style="border: none; background-color: white;">Enable</button></div>
+                                                        <div style="border: 1px solid rgb(135, 135, 135); padding: 5px;"><button style="border: none; background-color: white;">Delete</button></div>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <p class="fs-3 fw-normal mb-0">course name</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 p-2 description">
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed
-                                                        vel iste odit illum dolore, magni eos magnam nulla distinctio
-                                                        nesciunt ullam sit quaerat cumque quae tempora sint veritatis
-                                                        accusamus?
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0">1500</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">5</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0">Mohamed Adel</p>
-                                                </td>
-                                                <td>
-                                                    Category name
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">Adel</p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <span
-                                                        class="badge bg-light-success rounded-pill text-success px-3 py-2 fs-3 text-center">Available</span>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">12:50</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">12:50</p>
-                                                </td>
-                                            </tr>
-                                            <tr class="text-center">
-                                                <td>
-                                                    <div>
-                                                        <h6 class="fw-bolder mb-0">2</h6>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="fs-3 fw-normal mb-0">course name</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 p-2 description">
-                                                        Lorem ipsum dolor sit
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0">1500</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0">5</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0">sa3don</p>
-                                                </td>
-                                                <td>
-                                                    Category name
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">sa3don</p>
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        class="badge bg-light-warning rounded-pill text-warning px-3 py-2 fs-3">upcoming
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">12:50</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">12:50</p>
-                                                </td>
-                                            </tr>
-                                            <tr class="text-center">
-                                                <td>
-                                                    <div>
-                                                        <h6 class="fw-bolder mb-0">3</h6>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="fs-3 fw-normal mb-0">course name</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 p-2 description">
-                                                        Lorem ipsum dolor sit
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0">1500</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0">5</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0">sa3don</p>
-                                                </td>
-                                                <td>
-                                                    Category name
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">sa3don</p>
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        class="badge bg-light-danger rounded-pill text-danger px-3 py-2 fs-3 text-center">deactivated
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">12:50</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">12:50</p>
-                                                </td>
-                                            </tr>
-                                            <tr class="text-center">
-                                                <td>
-                                                    <div>
-                                                        <h6 class="fw-bolder mb-0">4</h6>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="fs-3 fw-normal mb-0">course name</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 p-2 description">
-                                                        Lorem ipsum dolor sit
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0">1500</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0">5</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0">sa3don</p>
-                                                </td>
-                                                <td>
-                                                    Category name
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">sa3don</p>
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        class="badge bg-light-primary rounded-pill text-primary px-3 py-2 fs-3">completed</span>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">12:50</p>
-                                                </td>
-                                                <td>
-                                                    <p class="mb-0 text-center">12:50</p>
-                                                </td>
-                                            </tr>
+                                                </tr>
+                                                <tr class="text-center">
+                                                    <td><input type="checkbox" class="author"></td>
+                                                    <td>
+                                                        <div>
+                                                            <h6 class="fw-bolder mb-0">1</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <p class="fs-3 fw-normal mb-0">course name</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 p-2 description">
+                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                                                            sed
+                                                            vel iste odit illum dolore, magni eos magnam nulla
+                                                            distinctio
+                                                            nesciunt ullam sit quaerat cumque quae tempora sint
+                                                            veritatis
+                                                            accusamus?
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">1500</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">5</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">Mohamed Adel</p>
+                                                    </td>
+                                                    <td>
+                                                        Category name
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">Adel</p>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <!-- <form action="" id="form-status">
+                                                    <select id="status-select" onchange="submitForm('form-status')"
+                                                        class="select-input-status badge bg-light-success rounded-pill text-success px-3 py-2 fs-3 text-center">
+                                                        <option value="available" >Available</option>
+                                                        <option value="upcoming" >Upcoming</option>
+                                                        <option value="deactivated" >Deactivated</option>
+                                                        <option value="completed">Completed</option>
+                                                    </select>
+                                                </form> -->
+                                                        <span
+                                                            class="status-text badge rounded-pill px-3 py-2 fs-3">Available
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">12:50</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">12:50</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="text-center">
+                                                    <td><input type="checkbox" class="author"></td>
+                                                    <td>
+                                                        <div>
+                                                            <h6 class="fw-bolder mb-0">2</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <p class="fs-3 fw-normal mb-0">course name</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 p-2 description">
+                                                            Lorem ipsum dolor sit
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">1500</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">5</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">sa3don</p>
+                                                    </td>
+                                                    <td>
+                                                        Category name
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">sa3don</p>
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            class="status-text badge rounded-pill px-3 py-2 fs-3">upcoming
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">12:50</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">12:50</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="text-center">
+                                                    <td><input type="checkbox" class="author"></td>
+                                                    <td>
+                                                        <div>
+                                                            <h6 class="fw-bolder mb-0">3</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <p class="fs-3 fw-normal mb-0">course name</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 p-2 description">
+                                                            Lorem ipsum dolor sit
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">1500</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">5</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">sa3don</p>
+                                                    </td>
+                                                    <td>
+                                                        Category name
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">sa3don</p>
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            class="status-text badge rounded-pill px-3 py-2 fs-3 text-center">deactivated
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">12:50</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">12:50</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="text-center">
+                                                    <td><input type="checkbox" class="author"></td>
+                                                    <td>
+                                                        <div>
+                                                            <h6 class="fw-bolder mb-0">4</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <p class="fs-3 fw-normal mb-0">course name</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 p-2 description">
+                                                            Lorem ipsum dolor sit
+                                                        </p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">1500</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">5</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">sa3don</p>
+                                                    </td>
+                                                    <td>
+                                                        Category name
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">sa3don</p>
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            class="status-text badge rounded-pill px-3 py-2 fs-3">completed</span>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">12:50</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-center">12:50</p>
+                                                    </td>
+                                                </tr>
+                                            </form>
                                         </tbody>
                                     </table>
                                     <hr>
@@ -725,7 +764,7 @@
                                                 <th class="col text-center">User Created at </th>
                                                 <th class="col text-center">User Updated_at</th>
                                                 <th class="col text-center">User Subscription - Create at </th>
-                                                <th class="col text-center">User Subscription - Create at</th>
+                                                <th class="col text-center">User Subscription - Update at</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -812,12 +851,12 @@
         </div>
     </div>
     </div>
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="../assets/js/sidebarmenu.js"></script> -->
     <script src="../assets/js/app.min.js"></script>
-    <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+    <!-- <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script> -->
+    <script src="../assets/js/simplebar.js"></script>
     <script src="../assets/js/dashboard.js"></script>
 </body>
 

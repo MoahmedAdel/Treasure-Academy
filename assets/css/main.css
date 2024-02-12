@@ -67,4 +67,5 @@ index page
     overflow-y: auto;
     white-space: wrap;
     border-radius: 5px;
+    scrollbar-width: thin;
 }
