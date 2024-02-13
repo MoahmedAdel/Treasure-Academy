@@ -203,18 +203,57 @@ function submitForm(formId) {
   document.getElementById(formId).submit();
 }
 
-//select all rows and show numbers row checked 
+// Select all rows and show buttons  
 document.getElementById('selectAllAuthors').addEventListener('change', function () {
   var authorCheckboxes = document.getElementsByClassName('author');
   for (var i = 0; i < authorCheckboxes.length; i++) {
     authorCheckboxes[i].checked = this.checked;
   }
-  //show buttons when check all row
+  // Show buttons when checking all rows
   var controls = document.getElementById('controls');
-  controls.style.display = this.checked ? 'table-cell' : 'none';
+  var buttonEdit = document.getElementById('edit-button');
+  buttonEdit.style.display = onlyOneAuthorChecked() ? 'block' : 'none';
+  controls.style.display = anyAuthorChecked() ? 'table-cell' : 'none'; // Show controls if any author is checked
   updateAuthorCount();
 });
 
+// When check all rows, selectAllAuthors checked  
+var authorCheckboxes = document.getElementsByClassName('author');
+for (var i = 0; i < authorCheckboxes.length; i++) {
+  authorCheckboxes[i].addEventListener('change', function () {
+    // Show buttons when checking all rows
+    var controls = document.getElementById('controls');
+    var buttonEdit = document.getElementById('edit-button');
+    buttonEdit.style.display = onlyOneAuthorChecked() ? 'block' : 'none';
+    controls.style.display = anyAuthorChecked() ? 'table-cell' : 'none'; // Show controls if any author is checked
+    updateAuthorCount();
+  });
+}
+
+// Function to check if any author checkbox is checked  
+function anyAuthorChecked() {
+  var authorCheckboxes = document.getElementsByClassName('author');
+  for (var i = 0; i < authorCheckboxes.length; i++) {
+    if (authorCheckboxes[i].checked) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Function to check if only one author checkbox is checked  
+function onlyOneAuthorChecked() {
+  var checkedCount = 0;
+  var authorCheckboxes = document.getElementsByClassName('author');
+  for (var i = 0; i < authorCheckboxes.length; i++) {
+    if (authorCheckboxes[i].checked) {
+      checkedCount++;
+    }
+  }
+  return checkedCount === 1;
+}
+
+// Additional event listener to update count when any author checkbox changes state  
 var authorCheckboxes = document.getElementsByClassName('author');
 for (var i = 0; i < authorCheckboxes.length; i++) {
   authorCheckboxes[i].addEventListener('change', function () {
@@ -222,14 +261,15 @@ for (var i = 0; i < authorCheckboxes.length; i++) {
   });
 }
 
+// Function to update the count of selected authors  
 function updateAuthorCount() {
   var checkedCount = document.querySelectorAll('input[class="author"]:checked').length;
   document.getElementById('authorCount').textContent = checkedCount + " selected";
 }
 
+
 //change color span status when textContent changes
 var statuses = document.getElementsByClassName("status-text");
-
 for (var i = 0; i < statuses.length; i++) {
   var content = statuses[i].textContent.trim().toLowerCase();
 
