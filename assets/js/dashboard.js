@@ -19,6 +19,22 @@ document.addEventListener("DOMContentLoaded", function() {
       }
   });
 });
+
+//add class active to control becouse hide add category ,add ....
+document.addEventListener("DOMContentLoaded", function() {
+  var controlItem = document.getElementById('controlItem');
+  var control = document.querySelector('.control');
+
+  controlItem.addEventListener('click', function() {
+      // Toggle the display of the control class
+      if (control.style.display === 'none') {
+          control.style.display = 'block';
+      } else {
+          control.style.display = 'none';
+      }
+  });
+});
+
 // =====================================
 // selected input 
 // =====================================

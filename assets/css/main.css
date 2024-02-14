@@ -52,6 +52,12 @@ index page
 .background-active.active{
     background-color: #e5f3fb
 }
+.hover-text-blue{
+    transition: .2s;
+}
+.hover-text-blue:hover{
+    color: rgb(0, 133, 219);
+}
 .num_rows_input {
     width: 20%;
     padding: 5px 10px;
