@@ -27,12 +27,17 @@
                                 <form>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Username</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp">
+                                        <input type="text" class="form-control">
+                                        <div>
+                                            <p class="text-danger ms-3">error</p>
+                                        </div>
                                     </div>
                                     <div class="mb-4">
                                         <label for="exampleInputPassword1" class="form-label">Password</label>
                                         <input type="password" class="form-control" id="exampleInputPassword1">
+                                        <div>
+                                            <p class="text-danger ms-3">error</p>
+                                        </div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="form-check">
@@ -45,9 +50,17 @@
                                         <a class="forgot-pass text-primary text-decoration-none" href="">Forgot Password
                                             ?</a>
                                     </div>
+                                    <div class="text-center mb-3">
+                                        <input type="radio" class="form-check-input" id="user" name="type">
+                                        <label for="user" class="text-dark fw-semibold">User</label>
+                                        <input type="radio" class="form-check-input ms-3" id="admin" name="type">
+                                        <label for="admin" class="text-dark fw-semibold">Admin</label>
+                                        <div>
+                                            <p class="text-danger ">error</p>
+                                        </div>
+                                    </div>
                                     <div class="row justify-content-center">
-                                        <a href="" class="btn btn-primary w-50 fs-4 mb-4 rounded-2">Sign
-                                            In</a>
+                                        <input type="submit" class="btn btn-primary w-50 fs-4 mb-4 rounded-2"></input>
                                     </div>
                                 </form>
                             </div>
@@ -63,8 +76,6 @@
             </div>
         </div>
     </div>
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

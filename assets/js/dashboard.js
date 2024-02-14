@@ -1,199 +1,24 @@
-$(function () {
 
+//add active class to element if be in page 
+document.addEventListener("DOMContentLoaded", function() {
+  // Get the current page URL
+  var currentPageUrl = window.location.href;
 
-  // =====================================
-  // Profit
-  // =====================================
-  var profit = {
-    series: [
-      {
-        name: "Profit",
-        data: [18, 7, 15, 29, 18, 18, 7, 15, 29, 18, 12, 9],
-      },
-      {
-        name: "Expenses",
-        data: [-13, -18, -9, -14, -15, -13, -18, -9, -14, -5, -17, -15],
-      },
-    ],
-    colors: ["var(--bs-primary)", "#fb977d"],
-    chart: {
-      type: "bar",
-      fontFamily: "Plus Jakarta Sans', sans-serif",
-      foreColor: "#adb0bb",
-      width: "100%",
-      height: 350,
-      stacked: true,
-      toolbar: {
-        show: !1,
-      },
-    },
+  // Get all sidebar links
+  var sidebarLinks = document.querySelectorAll('.background-active');
 
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: "35%",
-        borderRadius: [6],
-        borderRadiusApplication: 'end',
-        borderRadiusWhenStacked: 'all'
-      },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    stroke: {
-      curve: "smooth",
-      width: 6,
-      colors: ["transparent"],
-    },
-
-    grid: {
-      borderColor: "transparent",
-      padding: { top: 0, bottom: -8, left: 20, right: 20 },
-    },
-    tooltip: {
-      theme: "dark",
-    },
-    toolbar: {
-      show: false,
-    },
-    xaxis: {
-      categories: ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-      axisBorder: {
-        show: false,
-      },
-      axisTicks: {
-        show: false,
-      },
-    },
-    legend: {
-      show: false,
-    },
-    fill: {
-      opacity: 1,
-    },
-  };
-
-  var chart = new ApexCharts(document.querySelector("#profit"), profit);
-  chart.render();
-
-
-  // =====================================
-  // Breakup
-  // =====================================
-  var grade = {
-    series: [5368, 3500, 4106],
-    labels: ["5368", "Refferal Traffic", "Oragnic Traffic"],
-    chart: {
-      height: 170,
-      type: "donut",
-      fontFamily: "Plus Jakarta Sans', sans-serif",
-      foreColor: "#c6d1e9",
-    },
-
-    tooltip: {
-      theme: "dark",
-      fillSeriesColor: false,
-    },
-
-    colors: ["#e7ecf0", "#fb977d", "var(--bs-primary)"],
-    dataLabels: {
-      enabled: false,
-    },
-
-    legend: {
-      show: false,
-    },
-
-    stroke: {
-      show: false,
-    },
-    responsive: [
-      {
-        breakpoint: 991,
-        options: {
-          chart: {
-            width: 150,
-          },
-        },
-      },
-    ],
-    plotOptions: {
-      pie: {
-        donut: {
-          size: '80%',
-          background: "none",
-          labels: {
-            show: true,
-            name: {
-              show: true,
-              fontSize: "12px",
-              color: undefined,
-              offsetY: 5,
-            },
-            value: {
-              show: false,
-              color: "#98aab4",
-            },
-          },
-        },
-      },
-    },
-  };
-
-  var chart = new ApexCharts(document.querySelector("#grade"), grade);
-  chart.render();
-
-
-
-
-  // =====================================
-  // Earning
-  // =====================================
-  var earning = {
-    chart: {
-      id: "sparkline3",
-      type: "area",
-      height: 60,
-      sparkline: {
-        enabled: true,
-      },
-      group: "sparklines",
-      fontFamily: "Plus Jakarta Sans', sans-serif",
-      foreColor: "#adb0bb",
-    },
-    series: [
-      {
-        name: "Earnings",
-        color: "#8763da",
-        data: [25, 66, 20, 40, 12, 58, 20],
-      },
-    ],
-    stroke: {
-      curve: "smooth",
-      width: 2,
-    },
-    fill: {
-      colors: ["#f3feff"],
-      type: "solid",
-      opacity: 0.05,
-    },
-
-    markers: {
-      size: 0,
-    },
-    tooltip: {
-      theme: "dark",
-      fixed: {
-        enabled: true,
-        position: "right",
-      },
-      x: {
-        show: false,
-      },
-    },
-  };
-  new ApexCharts(document.querySelector("#earning"), earning).render();
-})
+  // Loop through each sidebar link
+  sidebarLinks.forEach(function(link) {
+      // Get the link's href attribute
+      var linkHref = link.getAttribute('href');
+      
+      // Check if the current page URL matches the link's href attribute
+      if (currentPageUrl.includes(linkHref)) {
+          // Add the active class to the link
+          link.classList.add('active');
+      }
+  });
+});
 // =====================================
 // selected input 
 // =====================================
@@ -203,69 +28,94 @@ function submitForm(formId) {
   document.getElementById(formId).submit();
 }
 
-// Select all rows and show buttons  
-document.getElementById('selectAllAuthors').addEventListener('change', function () {
-  var authorCheckboxes = document.getElementsByClassName('author');
-  for (var i = 0; i < authorCheckboxes.length; i++) {
-    authorCheckboxes[i].checked = this.checked;
-  }
-  // Show buttons when checking all rows
-  var controls = document.getElementById('controls');
-  var buttonEdit = document.getElementById('edit-button');
-  buttonEdit.style.display = onlyOneAuthorChecked() ? 'block' : 'none';
-  controls.style.display = anyAuthorChecked() ? 'table-cell' : 'none'; // Show controls if any author is checked
-  updateAuthorCount();
-});
-
-// When check all rows, selectAllAuthors checked  
-var authorCheckboxes = document.getElementsByClassName('author');
-for (var i = 0; i < authorCheckboxes.length; i++) {
-  authorCheckboxes[i].addEventListener('change', function () {
+function setupSectionCheckbox(parentCheckboxId, authorCheckboxClass, controlsId, editButtonId, textSelect) {
+  // Select all rows and show buttons  
+  document.getElementById(parentCheckboxId).addEventListener('change', function () {
+    var authorCheckboxes = document.getElementsByClassName(authorCheckboxClass);
+    for (var i = 0; i < authorCheckboxes.length; i++) {
+      authorCheckboxes[i].checked = this.checked;
+    }
     // Show buttons when checking all rows
-    var controls = document.getElementById('controls');
-    var buttonEdit = document.getElementById('edit-button');
+    var controls = document.getElementById(controlsId);
+    var buttonEdit = document.getElementById(editButtonId);
     buttonEdit.style.display = onlyOneAuthorChecked() ? 'block' : 'none';
     controls.style.display = anyAuthorChecked() ? 'table-cell' : 'none'; // Show controls if any author is checked
     updateAuthorCount();
   });
-}
 
-// Function to check if any author checkbox is checked  
-function anyAuthorChecked() {
-  var authorCheckboxes = document.getElementsByClassName('author');
+  // When check all rows, parentCheckBox checked  
+  var authorCheckboxes = document.getElementsByClassName(authorCheckboxClass);
   for (var i = 0; i < authorCheckboxes.length; i++) {
-    if (authorCheckboxes[i].checked) {
-      return true;
-    }
-  }
-  return false;
-}
+    authorCheckboxes[i].addEventListener('change', function () {
+      // Show buttons when checking all rows
+      var controls = document.getElementById(controlsId);
+      var buttonEdit = document.getElementById(editButtonId);
+      buttonEdit.style.display = onlyOneAuthorChecked() ? 'block' : 'none';
+      controls.style.display = anyAuthorChecked() ? 'table-cell' : 'none'; // Show controls if any author is checked
+      updateAuthorCount();
 
-// Function to check if only one author checkbox is checked  
-function onlyOneAuthorChecked() {
-  var checkedCount = 0;
-  var authorCheckboxes = document.getElementsByClassName('author');
+      // Update parentCheckBox checkbox state
+      document.getElementById(parentCheckboxId).checked = allAuthorsChecked();
+    });
+  }
+
+  // Function to check if any author checkbox is checked  
+  function anyAuthorChecked() {
+    var authorCheckboxes = document.getElementsByClassName(authorCheckboxClass);
+    for (var i = 0; i < authorCheckboxes.length; i++) {
+      if (authorCheckboxes[i].checked) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // Function to check if all author checkboxes are checked  
+  function allAuthorsChecked() {
+    var authorCheckboxes = document.getElementsByClassName(authorCheckboxClass);
+    for (var i = 0; i < authorCheckboxes.length; i++) {
+      if (!authorCheckboxes[i].checked) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // Function to check if only one author checkbox is checked  
+  function onlyOneAuthorChecked() {
+    var checkedCount = 0;
+    var authorCheckboxes = document.getElementsByClassName(authorCheckboxClass);
+    for (var i = 0; i < authorCheckboxes.length; i++) {
+      if (authorCheckboxes[i].checked) {
+        checkedCount++;
+      }
+    }
+    return checkedCount === 1;
+  }
+
+  // Additional event listener to update count when any author checkbox changes state  
+  var authorCheckboxes = document.getElementsByClassName(authorCheckboxClass);
   for (var i = 0; i < authorCheckboxes.length; i++) {
-    if (authorCheckboxes[i].checked) {
-      checkedCount++;
-    }
+    authorCheckboxes[i].addEventListener('change', function () {
+      updateAuthorCount();
+    });
   }
-  return checkedCount === 1;
+
+  // Function to update the count of selected authors  
+  function updateAuthorCount() {
+    var checkedCount = document.querySelectorAll('input[class="' + authorCheckboxClass + '"]:checked').length;
+    document.getElementById(textSelect).textContent = checkedCount + " selected";
+  }
 }
 
-// Additional event listener to update count when any author checkbox changes state  
-var authorCheckboxes = document.getElementsByClassName('author');
-for (var i = 0; i < authorCheckboxes.length; i++) {
-  authorCheckboxes[i].addEventListener('change', function () {
-    updateAuthorCount();
-  });
-}
+// Call the function for each section with specific parameters
+setupSectionCheckbox('parentCheckboxCourses', 'authorCheckboxCourses', 'controlCourses', 'editButtonCourses','textSelectCourses');
+setupSectionCheckbox('parentCheckboxCategory', 'authorCheckboxCategory', 'controlCategory', 'editButtonCategory','textSelectCategory');
+setupSectionCheckbox('parentCheckboxSetion', 'authorCheckboxSetion', 'controlSetion', 'editButtonSetion','textSelectSetion');
+setupSectionCheckbox('parentCheckboxLecture', 'authorCheckboxLecture', 'controlLecture', 'editButtonLecture','textSelectLecture');
+setupSectionCheckbox('parentCheckboxUser', 'authorCheckboxUser', 'controlUser', 'editButtonUser','textSelectUser');
+// Add more calls for other sections if needed
 
-// Function to update the count of selected authors  
-function updateAuthorCount() {
-  var checkedCount = document.querySelectorAll('input[class="author"]:checked').length;
-  document.getElementById('authorCount').textContent = checkedCount + " selected";
-}
 
 
 //change color span status when textContent changes
